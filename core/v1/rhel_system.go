@@ -25,16 +25,18 @@ type RHELSystem struct {
 
 // A RHEL system managed by console.redhat.com
 type SystemClass struct {
-	DisplayName *string         `json:"display_name,omitempty"`
-	HostURL     *string         `json:"host_url,omitempty"`    
-	Hostname    *string         `json:"hostname,omitempty"`    
-	InventoryID string          `json:"inventory_id"`          
-	RHELVersion *string         `json:"rhel_version,omitempty"`
-	Tags        []RHELSystemTag `json:"tags,omitempty"`        
+	// Timestamp of when the system did a check in. Must adhere to RFC 3339.                
+	CheckIn                                                                 *string         `json:"check_in,omitempty"`
+	DisplayName                                                             *string         `json:"display_name,omitempty"`
+	HostURL                                                                 *string         `json:"host_url,omitempty"`
+	Hostname                                                                *string         `json:"hostname,omitempty"`
+	InventoryID                                                             string          `json:"inventory_id"`
+	RHELVersion                                                             *string         `json:"rhel_version,omitempty"`
+	Tags                                                                    []RHELSystemTag `json:"tags,omitempty"`
 }
 
 type RHELSystemTag struct {
-	Key       string `json:"key"`      
+	Key       string `json:"key"`
 	Namespace string `json:"namespace"`
-	Value     string `json:"value"`    
+	Value     string `json:"value"`
 }

@@ -20,31 +20,34 @@ func (r *AdvisorRecommendations) Marshal() ([]byte, error) {
 
 // Event data for Advisor Recommendations.
 type AdvisorRecommendations struct {
-	AdvisorRecommendations []AdvisorRecommendation `json:"advisor_recommendations"`// Advisor recommendations for a system
-	System                 RHELSystem              `json:"system"`                 
+	// Advisor recommendations for a system                        
+	AdvisorRecommendations                 []AdvisorRecommendation `json:"advisor_recommendations"`
+	System                                 RHELSystem              `json:"system"`
 }
 
 type AdvisorRecommendation struct {
-	PublishDate     string `json:"publish_date"`    
-	RebootRequired  bool   `json:"reboot_required"` 
+	PublishDate     string `json:"publish_date"`
+	RebootRequired  bool   `json:"reboot_required"`
 	RuleDescription string `json:"rule_description"`
-	RuleID          string `json:"rule_id"`         
-	RuleURL         string `json:"rule_url"`        
-	TotalRisk       string `json:"total_risk"`      
+	RuleID          string `json:"rule_id"`
+	RuleURL         string `json:"rule_url"`
+	TotalRisk       string `json:"total_risk"`
 }
 
 // A RHEL system managed by console.redhat.com
 type RHELSystem struct {
-	DisplayName *string         `json:"display_name,omitempty"`
-	HostURL     *string         `json:"host_url,omitempty"`    
-	Hostname    *string         `json:"hostname,omitempty"`    
-	InventoryID string          `json:"inventory_id"`          
-	RHELVersion *string         `json:"rhel_version,omitempty"`
-	Tags        []RHELSystemTag `json:"tags,omitempty"`        
+	// Timestamp of when the system did a check in. Must adhere to RFC 3339.                
+	CheckIn                                                                 *string         `json:"check_in,omitempty"`
+	DisplayName                                                             *string         `json:"display_name,omitempty"`
+	HostURL                                                                 *string         `json:"host_url,omitempty"`
+	Hostname                                                                *string         `json:"hostname,omitempty"`
+	InventoryID                                                             string          `json:"inventory_id"`
+	RHELVersion                                                             *string         `json:"rhel_version,omitempty"`
+	Tags                                                                    []RHELSystemTag `json:"tags,omitempty"`
 }
 
 type RHELSystemTag struct {
-	Key       string `json:"key"`      
+	Key       string `json:"key"`
 	Namespace string `json:"namespace"`
-	Value     string `json:"value"`    
+	Value     string `json:"value"`
 }

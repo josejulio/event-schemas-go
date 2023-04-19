@@ -25,10 +25,14 @@ type Error struct {
 
 // An error reported by an application.
 type ErrorClass struct {
-	Code       string   `json:"code"`                 // Machine-readable error code that identifies the error.
-	Message    string   `json:"message"`              // Human readable description of the error.
-	Severity   Severity `json:"severity"`             // The severity of the error.
-	StackTrace *string  `json:"stack_trace,omitempty"`// The stack trace/traceback (optional)
+	// Machine-readable error code that identifies the error.         
+	Code                                                     string   `json:"code"`
+	// Human readable description of the error.                       
+	Message                                                  string   `json:"message"`
+	// The severity of the error.                                     
+	Severity                                                 Severity `json:"severity"`
+	// The stack trace/traceback (optional)                           
+	StackTrace                                               *string  `json:"stack_trace,omitempty"`
 }
 
 // The severity of the error.
