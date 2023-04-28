@@ -46,7 +46,7 @@ type System struct {
 }
 
 type RHELSystemTag struct {
-	Key       string `json:"key"`
-	Namespace string `json:"namespace"`
-	Value     string `json:"value"`
+	Key       string  `json:"key"`
+	Namespace string  `json:"namespace"`
+	Value     *string `json:"value,omitempty"`
 }
